@@ -1,0 +1,162 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #1a1a1a; /* Dark gray-black */
+    color: #e0e0e0; /* Light gray text */
+    line-height: 1.6;
+}
+
+/* Navigation Bar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #2c2c2c; /* Darker gray */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #00bcd4; /* Cyan accent */
+}
+
+ navbar-links a {
+    color: #e0e0e0;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+    color: #00bcd4; /* Cyan hover */
+}
+
+/* Main Content */
+main {
+    margin-top: 80px; /* Space for fixed navbar */
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Buttons */
+button, .btn {
+    padding: 10px 20px;
+    background-color: #00bcd4; /* Cyan */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover, .btn:hover {
+    background-color: #0097a7; /* Darker cyan */
+}
+
+.delete-btn {
+    background-color: #ff4444; /* Red */
+    padding: 5px 10px;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000; /* Darker red */
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2c2c2c;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #444; /* Subtle border */
+    text-align: left;
+}
+
+th {
+    background-color: #3d3d3d; /* Slightly lighter gray */
+    color: #00bcd4;
+}
+
+td a {
+    color: #00bcd4;
+    text-decoration: none;
+}
+
+td a:hover {
+    text-decoration: underline;
+}
+
+.highlight {
+    background-color: #4a2c2c; /* Dark red for matched rows */
+}
+
+.keyword-match {
+    color: #ff4444; /* Red keywords */
+    font-weight: bold;
+}
+
+/* Forms */
+form {
+    margin: 10px 0;
+}
+
+input[type="text"] {
+    padding: 8px;
+    background-color: #3d3d3d;
+    color: #e0e0e0;
+    border: 1px solid #444;
+    border-radius: 5px;
+    width: 200px;
+}
+
+/* Progress Bar */
+#progress-bar-container {
+    width: 50%;
+    margin: 20px auto;
+    background-color: #3d3d3d;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 30px;
+    background-color: #00bcd4;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    transition: width 0.5s;
+}
+
+/* Lists */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

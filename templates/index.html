@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CTI CVE Tracker</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid black; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .button-container { margin: 10px 0; }
+        .action-btn { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px; }
+        .action-btn:hover { background-color: #45a049; }
+        .filter-btn { padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; cursor: pointer; margin-right: 10px; }
+        .filter-btn:hover { background-color: #0056b3; }
+        .wipe-btn { background-color: #ff4444; }
+        .wipe-btn:hover { background-color: #cc0000; }
+        .highlight { background-color: #ffcccc; }
+        .keyword-match { color: red; font-weight: bold; }
+        .active { background-color: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>Latest CVEs from News</h1>
+    <div class="button-container">
+        <a href="/update"><button class="action-btn">Update CVE List</button></a>
+        <!-- Commented out Wipe Database button - uncomment to restore -->
+        <!--
+        <form action="/wipe-db" method="post" style="display:inline;">
+            <button type="submit" class="action-btn wipe-btn" onclick="return confirm('Are you sure?');">Wipe Database</button>
+        </form>
+        -->
+        <a href="/keywords"><button class="action-btn">Manage Keywords</button></a>
+        <a href="/cve-list?filter_today={% if filter_today %}false{% else %}true{% endif %}"><button class="filter-btn {% if filter_today %}active{% endif %}">Today's News</button></a>
+        <a href="/cve-list?filter_this_week={% if filter_this_week %}false{% else %}true{% endif %}"><button class="filter-btn {% if filter_this_week %}active{% endif %}">This Week's News</button></a>
+        <a href="/cve-list?filter_rest={% if filter_rest %}false{% else %}true{% endif %}"><button class="filter-btn {% if filter_rest %}active{% endif %}">Older News</button></a>
+        <a href="/cve-list?sort_by_severity={% if sort_by_severity %}false{% else %}true{% endif %}"><button class="filter-btn {% if sort_by_severity %}active{% endif %}">Sort by Severity</button></a>
+        <a href="/cve-list"><button class="filter-btn">Reset Filters</button></a>
+    </div>
+    <table>
+        <tr>
+            <th>CVE ID</th>
+            <th>News Title</th>
+            <th>CVE Summary</th>
+            <th>Severity</th>
+            <th>Published</th>
+            <th>Links</th>
+            <th>Date Imported</th>
+        </tr>
+        {% if cves %}
+            {% for cve in cves %}
+            <tr {% if cve.should_highlight %}class="highlight"{% endif %}>
+                <td><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name={{ cve.cve_id }}">{{ cve.cve_id }}</a></td>
+                <td>{{ cve.news_title }}</td>
+                <td>{{ cve.summary | safe }}</td>
+                <td>{{ cve.severity }}</td>
+                <td>{{ cve.publication_date }}</td>
+                <td>
+                    {% for link in cve.links %}
+                        <a href="{{ link }}" target="_blank">Link</a>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td>{{ cve.date_imported }}</td>
+            </tr>
+            {% endfor %}
+        {% else %}
+            <tr><td colspan="7">No CVEs found.</td></tr>
+        {% endif %}
+    </table>
+</body>
+</html>

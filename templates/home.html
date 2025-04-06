@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News CTI Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin: 10px 0;
+        }
+        .sources {
+            text-align: left;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+        .sources h2 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+        .sources ul {
+            list-style-type: none;
+            padding: 0;
+            font-size: 0.9em;
+        }
+        .sources li {
+            margin: 5px 0;
+        }
+        .sources a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+        .sources a:hover {
+            text-decoration: underline;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to News CTI Tracker</h1>
+        <p>Thanks for checking out this tool! It’s a Cyber Threat Intelligence (CTI) collector that pulls news from various cybersecurity sources into one convenient spot.</p>
+        <p>You can add keywords—like "Windows"—to highlight relevant CVEs and news for products you care about, making CTI tracking a breeze.</p>
+        <p>Please understand this unreleased and a work in progress and by no means is a public release. If its broken I apologize in advance because I am most likely currently programming a change if its down.</p>
+        <p>Below is going to be the most recent change I have made to keep people activly using it in the loop along with things I'm going to fix. If there is something else you would like to report PLEASE! check out my base useroflinux.com site and get ahold of me.</p>
+        <p>Last Change: 04-04-25: Optimized the CVE data pull. Looking at storing this data locally so I don't have to do a pull every time for the CVE data which is why the site is running so slow.</p>
+        <p>Issues:</p>
+        <p>1. Site is not easy to use. I want to relay everything out.</p>
+        <p>2. Cron job is broken atm. Looking at fixing. If I didn't the cve list this morning than do this -> Load into cve-list site, click update button, wait XD sorry its slow, then after a minute or so itll pull all the CVE data for today.</p>
+
+        <p>Last but not least this is OPEN SOURCE! Please use however you want as this falls under the GNU General Public License. I invite others to run with this idea and make it better than I can.</p>
+        <a href="https://github.com/jake98778/cti.useroflinux.com">https://github.com/jake98778/cti.useroflinux.com</a>
+        <div class="sources">
+            <h2>My News Sources</h2>
+            <ul>
+                <li><a href="https://www.bleepingcomputer.com/feed/" target="_blank">Bleeping Computer</a></li>
+                <li><a href="https://www.darkreading.com/rss.xml" target="_blank">Dark Reading</a></li>
+                <li><a href="https://www.threatpost.com/feed/" target="_blank">Threatpost</a></li>
+                <li><a href="https://www.schneier.com/feed/atom/" target="_blank">Schneier on Security</a></li>
+                <li><a href="https://www.krebsonsecurity.com/feed/" target="_blank">Krebs on Security</a></li>
+                <li><a href="https://www.infosecurity-magazine.com/rss/news/" target="_blank">Infosecurity Magazine</a></li>
+                <li><a href="https://www.news.ycombinator.com/rss" target="_blank">Hacker News</a></li>
+                <li><a href="https://www.sentinelone.com/labs/feed/" target="_blank">SentinelOne Labs</a></li>
+                <li><a href="https://www.zdnet.com/topic/security/rss.xml" target="_blank">ZDNet Security</a></li>
+                <li><a href="https://www.csoonline.com/feed" target="_blank">CSO Online</a></li>
+                <li><a href="https://securelist.com/feed/" target="_blank">Securelist (Kaspersky)</a></li>
+                <li><a href="https://blog.talosintelligence.com/rss/" target="_blank">Talos Intelligence</a></li> <!-- Note: You mentioned this might be weird, may need verification -->
+                <li><a href="https://msrc-blog.microsoft.com/feed/" target="_blank">Microsoft Security Response Center</a></li>
+                <li><a href="https://blog.qualys.com/feed" target="_blank">Qualys Blog</a></li>
+                <li><a href="https://nvd.nist.gov/feeds/xml/cve/misc/nvd-rss.xml" target="_blank">NVD RSS</a></li> <!-- Note: You said this isn’t working, needs fixing -->
+                <li><a href="https://www.cisa.gov/uscert/ncas/alerts.xml" target="_blank">CISA Alerts</a></li>
+                <li><a href="https://isc.sans.edu/rssfeed.xml" target="_blank">SANS Internet Storm Center</a></li>
+                <li><a href="https://www.zerodayinitiative.com/rss/upcoming/" target="_blank">Zero Day Initiative (Upcoming)</a></li>
+                <li><a href="https://www.zerodayinitiative.com/rss/published/" target="_blank">Zero Day Initiative (Published)</a></li>
+                <li><a href="https://www.zerodayinitiative.com/blog/" target="_blank">Zero Day Initiative Blog</a></li>
+                <li><a href="https://blog.malwarebytes.com/feed/" target="_blank">Malwarebytes Blog</a></li>
+                <li><a href="https://news.sophos.com/en-us/category/serious-security/feed/" target="_blank">Sophos Serious Security</a></li> <!-- Note: You questioned its usefulness -->
+                <li><a href="https://www.proofpoint.com/us/rss.xml" target="_blank">Proofpoint</a></li>
+                <li><a href="https://googleprojectzero.blogspot.com/feeds/posts/default" target="_blank">Google Project Zero</a></li>
+            </ul>
+        </div>
+
+        <a href="/cve-list"><button>View CVE List</button></a>
+    </div>
+</body>
+</html>

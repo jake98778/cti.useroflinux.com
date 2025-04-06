@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Manage Keywords</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        form { margin-bottom: 20px; }
+        input[type="text"] { padding: 5px; width: 200px; }
+        .add-btn { padding: 5px 10px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .add-btn:hover { background-color: #45a049; }
+        .delete-btn { padding: 2px 8px; background-color: #ff4444; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .delete-btn:hover { background-color: #cc0000; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 5px 0; display: flex; align-items: center; }
+        a { margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Manage Keywords</h1>
+    <form method="post">
+        <input type="text" name="keyword" placeholder="Enter keyword (e.g., Windows)" required>
+        <button type="submit" class="add-btn">Add Keyword</button>
+    </form>
+    <h2>Current Keywords</h2>
+    <ul>
+        {% for keyword in keywords %}
+            <li>
+                {{ keyword.word }}
+                <form method="post" style="display:inline;">
+                    <input type="hidden" name="delete_id" value="{{ keyword.id }}">
+                    <button type="submit" class="delete-btn" onclick="return confirm('Delete {{ keyword.word }}?');">-</button>
+                </form>
+            </li>
+        {% else %}
+            <li>No keywords added.</li>
+        {% endfor %}
+    </ul>
+    <a href="/cve-list">Back to CVE List</a>
+</body>
+</html>
